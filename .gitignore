@@ -1,0 +1,12 @@
+*~
+custom/.emacs.d/.cache/
+custom/.emacs.d/.lsp-session-v1
+custom/.emacs.d/eln-cache/
+custom/.emacs.d/elpa/
+custom/.emacs.d/init.el~
+custom/.emacs.d/projectile-bookmarks.eld
+custom/.emacs.d/transient/
+efs/.emacs.d/
+minimal/.emacs.d/
+spacemacs/.emacs.d/
+
