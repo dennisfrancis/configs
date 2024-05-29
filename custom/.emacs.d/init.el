@@ -210,10 +210,10 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 (use-package dap-mode 
   :after lsp-mode 
   :config (dap-auto-configure-mode))
-(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 
 ;; Org Mode Configuration ------------------------------------------------------
 
@@ -303,7 +303,7 @@
 
  (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
  (setq tab-width 4)
- (setq indent-tabs-mode t)  ; use spaces only if nil
+ (setq indent-tabs-mode nil)  ; use spaces only if nil
  )
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
