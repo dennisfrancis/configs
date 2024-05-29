@@ -118,19 +118,15 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :hook (
-	 (lsp-mode . efs/lsp-mode-setup)
-         ;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c++-mode . lsp)
-         (c-mode . lsp)
-         (python-mode . lsp)
-  )
   :init
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :hook
    (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+   (lsp-mode . efs/lsp-mode-setup)
+   (c-mode . lsp)
    (c++-mode . lsp)
    (python-mode . lsp)
+   (java-mode . lsp)
    ;; if you want which-key integration
    (lsp-mode . lsp-enable-which-key-integration)
    )
@@ -213,6 +209,11 @@
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(use-package dap-mode 
+  :after lsp-mode 
+  :config (dap-auto-configure-mode))
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 
 ;; Org Mode Configuration ------------------------------------------------------
 
@@ -333,8 +334,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(custom-enabled-themes '(tango-dark))
- ;; '(global-display-line-numbers-mode t)
  '(indent-tabs-mode nil)
  '(isearch-allow-motion t)
  '(lsp-ui-sideline-show-code-actions t)
