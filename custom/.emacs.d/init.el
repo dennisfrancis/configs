@@ -1,3 +1,5 @@
+(setq EMACS_DIR "~/.emacs.d/")
+
 (defvar dennisf/default-font-size 130)
 
 (setq inhibit-startup-message t)
@@ -37,6 +39,31 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+
+(use-package exec-path-from-shell :ensure t)
+(exec-path-from-shell-initialize)
+
+;; Load platform specific variables using specific files. E.g. linux.el. 
+;; Make necessary changes as needed
+(cond ((eq system-type 'windows-nt) (load (concat EMACS_DIR "windows")))
+((eq system-type 'gnu/linux) (load (concat EMACS_DIR "linux")))
+((eq system-type 'darwin) (load (concat EMACS_DIR "mac")))
+(t (load-library "default")))
+
+
+;; Move all the backup files to specific cache directory
+;; This way you won't have annoying temporary files starting with ~(tilde) in each directory
+;; Following setting will move temporary files to specific folders inside cache directory in EMACS_DIR
+
+(setq user-cache-directory (concat EMACS_DIR "cache"))
+(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
+      url-history-file (expand-file-name "url/history" user-cache-directory)
+      auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
+      projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+
+;; Automatically add ending brackets and braces
+(electric-pair-mode 1)
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
@@ -112,6 +139,11 @@
 (use-package avy)
 (use-package clang-format)
 
+(use-package yasnippet :config (yas-global-mode))
+(use-package yasnippet-snippets :ensure t)
+
+(use-package flycheck :ensure t :init (global-flycheck-mode))
+
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
@@ -119,18 +151,29 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
-  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  (setq 
+    lsp-keymap-prefix "C-c l"
+    lsp-enable-file-watchers nil
+    read-process-output-max (* 1024 1024)  ; 1 mb
+    lsp-completion-provider :capf
+    lsp-idle-delay 0.500
+    )  ;; Or 'C-l', 's-l'
   :hook
    (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
    (lsp-mode . efs/lsp-mode-setup)
    (c-mode . lsp)
    (c++-mode . lsp)
    (python-mode . lsp)
-   (java-mode . lsp)
+   (java-mode . #'lsp-deferred)
    ;; if you want which-key integration
    (lsp-mode . lsp-enable-which-key-integration)
    )
   :config
+
+  (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+  (with-eval-after-load 'lsp-intelephense
+    (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+
   ;; Arguments given to clangd server. See https://emacs-lsp.github.io/lsp-mode/lsp-mode.html#lsp-clangd
   (setq lsp-clients-clangd-args '(
                                   ;; If set to true, code completion will include index symbols that are not defined in the scopes
@@ -173,7 +216,16 @@
   (lsp-ui-doc-position 'bottom))
 
 (use-package lsp-treemacs
-  :after lsp)
+  :after (lsp-mode treemacs)
+  :ensure t
+  :commands lsp-treemacs-errors-list
+  :bind (:map lsp-mode-map
+         ("M-9" . lsp-treemacs-errors-list)))
+
+(use-package treemacs
+  :ensure t
+  :commands (treemacs)
+  :after (lsp-mode))
 
 (use-package lsp-ivy)
 
@@ -210,10 +262,24 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-(use-package dap-mode 
-  :after lsp-mode 
-  :config (dap-auto-configure-mode))
+(use-package lsp-java 
+	     :ensure t
+	     :config (add-hook 'java-mode-hook 'lsp))
+
+(use-package dap-mode
+  :ensure t
+  :after (lsp-mode)
+  :functions dap-hydra/nil
+  :config
+  (require 'dap-java)
+  :bind (:map lsp-mode-map
+         ("<f5>" . dap-debug)
+         ("M-<f5>" . dap-hydra))
+  :hook ((dap-mode . dap-ui-mode)
+    (dap-session-created . (lambda (&_rest) (dap-hydra)))
+    (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))))
+
+(use-package dap-java :ensure nil)
 
 ;; Org Mode Configuration ------------------------------------------------------
 
