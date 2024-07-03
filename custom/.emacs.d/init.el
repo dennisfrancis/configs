@@ -170,6 +170,12 @@
    )
   :config
 
+  (lsp-register-custom-settings
+   '(("pyls.plugins.pyls_mypy.enabled" t t)
+     ("pyls.plugins.pyls_mypy.live_mode" nil t)
+     ("pyls.plugins.pyls_black.enabled" t t)
+     ("pyls.plugins.pyls_isort.enabled" t t)))
+
   (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
   (with-eval-after-load 'lsp-intelephense
     (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
@@ -281,6 +287,10 @@
 
 (use-package dap-java :ensure nil)
 
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode 1))
 ;; Org Mode Configuration ------------------------------------------------------
 
 (defun efs/org-mode-setup ()
