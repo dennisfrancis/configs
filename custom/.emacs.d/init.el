@@ -291,6 +291,8 @@
   :ensure t
   :config
   (pyvenv-mode 1))
+
+(use-package cmake-mode)
 ;; Org Mode Configuration ------------------------------------------------------
 
 (defun efs/org-mode-setup ()
@@ -414,7 +416,7 @@
  '(isearch-allow-motion t)
  '(lsp-ui-sideline-show-code-actions t)
  '(package-selected-packages
-   '(flycheck which-key visual-fill-column rainbow-delimiters org-bullets magit lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful doom-themes doom-modeline counsel clang-format all-the-icons))
+   '(cmake-mode flycheck which-key visual-fill-column rainbow-delimiters org-bullets magit lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful doom-themes doom-modeline counsel clang-format all-the-icons))
  '(tab-bar-history-mode t)
  '(winner-mode t))
 (custom-set-faces
