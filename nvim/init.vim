@@ -34,6 +34,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" VIM-COMMENTARY
+autocmd FileType cpp setlocal commentstring=//\ %s
+
 let g:onedark_config = {
     \ 'style': 'warmer',
 \}
