@@ -4,12 +4,19 @@ call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'https://github.com/tpope/vim-unimpaired' " For inserting new lines before or after current and other misc.
 Plug 'https://github.com/preservim/nerdtree' ", {'on': 'NERDTreeToggle'}
 Plug 'https://github.com/navarasu/onedark.nvim'
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/preservim/tagbar', {'on': 'TagbarToggle'} " Tagbar for code navigation
+
+" Fuzzy Finder, Needs Silversearcher-ag for :Ag
+Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -65,3 +72,23 @@ let g:airline_theme='onedark'
 
 nmap <F6> :TagbarToggle<CR>
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Note -> Use CocList diagnostics to get all linter errors, Note -> .vim
+" folder is created for every project where linter is specified
+
+nnoremap <F3> :noh<CR>
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<C-H>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
