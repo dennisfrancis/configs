@@ -40,6 +40,8 @@ set expandtab
 set encoding=UTF-8
 set visualbell
 
+let mapleader = "," " map leader to comma
+
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
