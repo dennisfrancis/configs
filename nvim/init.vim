@@ -20,6 +20,7 @@ Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/christoomey/vim-tmux-navigator'
 Plug 'https://github.com/vim-test/vim-test'
 Plug 'https://github.com/preservim/vimux'
+Plug 'https://github.com/airblade/vim-gitgutter'
 
 call plug#end()
 
