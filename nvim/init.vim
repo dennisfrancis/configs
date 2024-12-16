@@ -7,6 +7,7 @@ Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/tpope/vim-unimpaired' " For inserting new lines before or after current and other misc.
 Plug 'https://github.com/preservim/nerdtree' ", {'on': 'NERDTreeToggle'}
 Plug 'https://github.com/navarasu/onedark.nvim'
+Plug 'https://github.com/catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
@@ -43,7 +44,8 @@ set visualbell
 let mapleader = "," " map leader to comma
 
 " To hide highlighting after a search.
-map <leader>h :noh<CR>
+nmap <leader>h :noh<CR>
+nmap <leader>f :FZF<cr>
 
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -53,13 +55,15 @@ noremap <C-l> <C-w>l
 " VIM-COMMENTARY
 autocmd FileType cpp setlocal commentstring=//\ %s
 
-let g:onedark_config = {
-    \ 'style': 'warmer',
-\}
-" :colorscheme base16-onedark
-:colorscheme onedark
+" let g:onedark_config = {
+"     \ 'style': 'warmer',
+" \}
+" " :colorscheme base16-onedark
+" :colorscheme onedark
 
 " :colorscheme gruvbox
+
+colorscheme catppuccin-mocha " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 " NERDTree Configuration
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -73,7 +77,7 @@ let g:bullets_enabled_file_types = [
     \ 'text'
     \]
 
-let g:airline_theme='onedark'
+let g:airline_theme='powerlineish'
 " let g:airline_theme='gruvbox'
 
 
