@@ -42,6 +42,9 @@ set visualbell
 
 let mapleader = "," " map leader to comma
 
+" To hide highlighting after a search.
+map <leader>h :noh<CR>
+
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
