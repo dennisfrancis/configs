@@ -22,6 +22,7 @@ Plug 'https://github.com/christoomey/vim-tmux-navigator'
 Plug 'https://github.com/vim-test/vim-test'
 Plug 'https://github.com/preservim/vimux'
 Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/tpope/vim-repeat' " enable repeating supported plugin maps with .
 
 call plug#end()
 
