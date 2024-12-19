@@ -23,6 +23,7 @@ Plug 'https://github.com/vim-test/vim-test'
 Plug 'https://github.com/preservim/vimux'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-repeat' " enable repeating supported plugin maps with .
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
