@@ -116,3 +116,9 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 let test#strategy = "vimux"
+
+if has('python')
+  map <C-K> :pyf /usr/share/clang/clang-format-18/clang-format.py<cr>
+elseif has('python3')
+  map <C-K> :py3f /usr/share/clang/clang-format-18/clang-format.py<cr>
+endif
