@@ -2,5 +2,4 @@
     "python.pythonPath": "/home/dennis/devel/django/django_projects/django42",
     "clangd.path": "/usr/bin/clangd-18",
     "clangd.arguments": ["--background-index", "--clang-tidy"],
-    "clangd.fallbackFlags": ["-std=c++20"]
 }
