@@ -24,6 +24,7 @@ Plug 'https://github.com/preservim/vimux'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-repeat' " enable repeating supported plugin maps with .
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'https://github.com/csexton/trailertrash.vim'
 
 call plug#end()
 
@@ -122,3 +123,7 @@ if has('python')
 elseif has('python3')
   map <C-K> :py3f /usr/share/clang/clang-format-18/clang-format.py<cr>
 endif
+
+" Trim trailing whitespace
+nmap <silent> <leader><SPACE> :TrailerTrim<CR>
+
