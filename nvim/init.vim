@@ -122,6 +122,7 @@ if has('python')
   map <C-K> :pyf /usr/share/clang/clang-format-18/clang-format.py<cr>
 elseif has('python3')
   map <C-K> :py3f /usr/share/clang/clang-format-18/clang-format.py<cr>
+  map <leader>= ggVG :py3f /usr/share/clang/clang-format-18/clang-format.py<cr><C-O>
 endif
 
 " Trim trailing whitespace
