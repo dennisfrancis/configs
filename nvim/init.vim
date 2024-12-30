@@ -44,6 +44,10 @@ set expandtab
 set encoding=UTF-8
 set visualbell
 
+nnoremap <M-;> ,
+xnoremap <M-;> ,
+onoremap <M-;> ,
+
 let mapleader = "," " map leader to comma
 
 " To hide highlighting after a search.
