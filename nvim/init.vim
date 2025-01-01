@@ -134,3 +134,6 @@ endif
 " Trim trailing whitespace
 nmap <silent> <leader><SPACE> :TrailerTrim<CR>
 
+autocmd FileType c nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
+autocmd FileType cpp nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
+
