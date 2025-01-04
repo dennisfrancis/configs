@@ -44,6 +44,8 @@ set expandtab
 set encoding=UTF-8
 set visualbell
 
+set cursorline
+
 nnoremap <M-;> ,
 xnoremap <M-;> ,
 onoremap <M-;> ,
