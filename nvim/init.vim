@@ -99,8 +99,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Note -> Use CocList diagnostics to get all linter errors, Note -> .vim
 " folder is created for every project where linter is specified
 
-nnoremap <F3> :noh<CR>
-
 inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<C-H>"
 
