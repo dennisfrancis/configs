@@ -46,6 +46,7 @@ set encoding=UTF-8
 set visualbell
 
 set cursorline
+set colorcolumn=80
 
 nnoremap <M-;> ,
 xnoremap <M-;> ,
