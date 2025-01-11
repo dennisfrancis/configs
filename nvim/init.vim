@@ -25,6 +25,7 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-repeat' " enable repeating supported plugin maps with .
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/csexton/trailertrash.vim'
+Plug 'https://github.com/nvie/vim-flake8' " Also install flake8 via pip
 
 call plug#end()
 
