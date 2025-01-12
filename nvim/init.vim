@@ -26,6 +26,8 @@ Plug 'https://github.com/tpope/vim-repeat' " enable repeating supported plugin m
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/csexton/trailertrash.vim'
 Plug 'https://github.com/nvie/vim-flake8' " Also install flake8 via pip
+Plug 'https://github.com/nvim-lua/plenary.nvim'
+Plug 'https://github.com/nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 call plug#end()
 
@@ -139,3 +141,8 @@ nmap <silent> <leader><SPACE> :TrailerTrim<CR>
 autocmd FileType c nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
 autocmd FileType cpp nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
