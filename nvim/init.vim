@@ -118,7 +118,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " vim-test
-nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
@@ -138,8 +138,13 @@ endif
 " Trim trailing whitespace
 nmap <silent> <leader><SPACE> :TrailerTrim<CR>
 
+" Function auto braces
 autocmd FileType c nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
 autocmd FileType cpp nnoremap <buffer> <leader>F A<CR>{<CR>}<Esc>O
+
+" Struct auto braces
+autocmd FileType c nnoremap <buffer> <leader>t A<CR>{<CR>};<Esc>O
+autocmd FileType cpp nnoremap <buffer> <leader>t A<CR>{<CR>};<Esc>O
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
