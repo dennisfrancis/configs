@@ -28,6 +28,7 @@ Plug 'https://github.com/csexton/trailertrash.vim'
 Plug 'https://github.com/nvie/vim-flake8' " Also install flake8 via pip
 Plug 'https://github.com/nvim-lua/plenary.nvim'
 Plug 'https://github.com/nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+Plug 'https://github.com/tikhomirov/vim-glsl'
 
 call plug#end()
 
