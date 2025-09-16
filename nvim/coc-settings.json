@@ -1,6 +1,6 @@
 {
     "python.pythonPath": "/home/dennis/devel/django/django_projects/django42",
     "python.linting.pylintEnabled": true,
-    "clangd.path": "/usr/bin/clangd-18",
+    "clangd.path": "/usr/bin/clangd-20",
     "clangd.arguments": ["--background-index", "--clang-tidy"],
 }

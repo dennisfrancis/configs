@@ -131,9 +131,9 @@ let test#strategy = "vimux"
 nmap <leader>, ggVG
 
 if has('python')
-  map <C-K> :pyf /usr/share/clang/clang-format-18/clang-format.py<cr>
+  map <C-K> :pyf /usr/share/clang/clang-format-20/clang-format.py<cr>
 elseif has('python3')
-  map <C-K> :py3f /usr/share/clang/clang-format-18/clang-format.py<cr>
+  map <C-K> :py3f /usr/share/clang/clang-format-20/clang-format.py<cr>
 endif
 
 " Trim trailing whitespace
