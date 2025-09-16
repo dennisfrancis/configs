@@ -155,3 +155,9 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " word search
 nnoremap <leader>/ /\<\><Left><Left>
+
+" Following are needed to coexist with tmux keybindings.
+" Remap increment (Ctrl-A) to +
+nnoremap + <C-a>
+" Remap decrement (Ctrl-X) to -
+nnoremap - <C-x>
